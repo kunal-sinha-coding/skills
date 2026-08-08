@@ -12,7 +12,7 @@ Analyze training errors in repeatable, user-approved batches and keep the analys
 1. Ask for the training command and the log file if either is not supplied. By default, look for `logs/README.md` and `logs/logs.txt`; read the logs README for its format and required context. Read the main repository `README.md` to identify the documented default training command and configuration.
 2. Ask the user to choose exactly one batch mode: one full epoch through all examples, one training step, or a custom number of examples. If the command does not expose a safe way to select that batch, explain the limitation and ask how to constrain it; do not silently rewrite the training command.
 3. Discover credentials, dataset, output directory, and W&B context from repository files, environment variables, configuration, and the training code before asking the user. Ask only for information that is genuinely unavailable or requires an explicit user choice. The user may type `STOP` at any point to end the loop.
-4. Before running training, rewrite `max_steps` in the active configuration to match the approved batch mode: use `-1` for one full epoch, `1` for one training step, or the requested count for a custom number of examples. Record this change with the command and configuration used for the batch.
+4. Ask the user to choose exactly one evaluation mode: the full evaluation set or a subset with a custom number of examples. Before running training, rewrite `max_steps` in the active configuration to match the approved training batch and rewrite `max_eval_samples` to match the approved evaluation mode: use `-1` or `null` for the full evaluation set, or the requested count for a subset. Record both limits with the command and configuration used for the batch.
 
 ## Run and analyze a batch
 
@@ -28,7 +28,7 @@ Analyze training errors in repeatable, user-approved batches and keep the analys
 
 Append the report to `error_analysis.txt`. Start every batch with a header that mirrors the log header's separator and timestamp style, but uses `ERROR ANALYSIS` instead of `RUN STARTING`. Include the command and batch mode directly below the header.
 
-If a tmux session is available, kill an existing window named `error-analysis` and create a new window with that name running `vim error_analysis.txt`. If the current session cannot support that operation, report the exact command the user can run and continue with the file output.
+If a tmux session is available, kill an existing window named `error-analysis` and create a new window with that name whose shell starts in the directory containing `error_analysis.txt`. Do not launch an editor; the user handles that. If the current session cannot support that operation, report the exact command the user can run and continue with the file output.
 
 ## Approve fixes and repeat
 
