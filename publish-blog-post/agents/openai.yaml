@@ -1,0 +1,4 @@
+interface:
+  display_name: "Publish Blog Post"
+  short_description: "Publish a draft blog post to the website"
+  default_prompt: "Use $publish-blog-post to publish the blog draft I specify."
