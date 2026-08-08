@@ -1,0 +1,4 @@
+interface:
+  display_name: "Run Iteratively"
+  short_description: "Run a command through an approved diagnose-and-fix loop."
+  default_prompt: "Run this command iteratively: <command>. First ask me for the stopping condition."

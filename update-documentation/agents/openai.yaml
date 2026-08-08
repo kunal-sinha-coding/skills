@@ -1,0 +1,4 @@
+interface:
+  display_name: "Update Documentation"
+  short_description: "Find and update stale README information across a repository."
+  default_prompt: "Review every README.md in this repository and update outdated information."

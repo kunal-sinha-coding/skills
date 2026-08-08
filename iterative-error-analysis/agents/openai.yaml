@@ -1,0 +1,4 @@
+interface:
+  display_name: "Iterative Error Analysis"
+  short_description: "Analyze training errors across approved iterative runs."
+  default_prompt: "Analyze this training command and log file iteratively: <command> <log-file>."
