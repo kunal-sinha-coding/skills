@@ -11,7 +11,7 @@ Analyze training errors in repeatable, user-approved batches and keep the analys
 
 1. Ask for the training command and the log file if either is not supplied. By default, look for `logs/README.md` and `logs/logs.txt`; read the logs README for its format and required context. Read the main repository `README.md` to identify the documented default training command and configuration.
 2. Ask the user to choose exactly one batch mode: one full epoch through all examples, one training step, or a custom number of examples. If the command does not expose a safe way to select that batch, explain the limitation and ask how to constrain it; do not silently rewrite the training command.
-3. Ask for any missing credentials, dataset, output directory, or W&B context needed to run safely. The user may type `STOP` at any point to end the loop.
+3. Discover credentials, dataset, output directory, and W&B context from repository files, environment variables, configuration, and the training code before asking the user. Ask only for information that is genuinely unavailable or requires an explicit user choice. The user may type `STOP` at any point to end the loop.
 
 ## Run and analyze a batch
 
