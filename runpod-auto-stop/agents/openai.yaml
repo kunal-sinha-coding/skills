@@ -1,0 +1,4 @@
+interface:
+  display_name: "RunPod Auto-Stop"
+  short_description: "Stop the current RunPod after a condition"
+  default_prompt: "Use $runpod-auto-stop to stop this RunPod after the specified condition is satisfied."
