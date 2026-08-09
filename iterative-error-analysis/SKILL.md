@@ -42,3 +42,4 @@ For selected fixes:
 4. At the top of the next report, add an `Iteration comparison` section evaluating whether the fixes changed the earlier error counts, patterns, metrics, or representative failures. Distinguish improvement, regression, and no meaningful change.
 
 Continue until the user stops, the selected stopping condition is met, or the user declines further fixes. Never hide a failed run or claim a fix worked without evidence.
+Artifact location requirement: every report must be appended to logs/error_analysis.txt in the repository. Any shell window opened for this workflow must start in the logs directory, and no editor should be launched automatically.
