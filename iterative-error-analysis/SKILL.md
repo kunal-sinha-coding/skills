@@ -70,7 +70,7 @@ Every report must contain these sections in this order:
 9. `Proposed solutions and confirmation tests`. Prioritize fixes. For each fix, provide enough implementation detail for someone else to act on it. Identify the affected files, components, examples, or data slices when known, describe the underlying change, explain why it should address the observed mechanism, name the patterns it should improve, state risks, tradeoffs, and possible regressions, and define the smallest confirmation test plus the expected result. Separate root-cause fixes from mitigations and observability-only follow-ups. Do not treat “add a log,” “log more fields,” “improve monitoring,” or similar instrumentation as a complete solution unless the problem itself is missing observability.
 10. `Limitations`. State missing logs, stochasticity, small samples, parser blind spots, unavailable W&B data, and any other uncertainty.
 
-Use W&B when the connected W&B MCP server is available. Report the exact metrics and run context consulted. Otherwise state that W&B could not be consulted and rely on local artifacts.
+Use the connected W&B MCP server to inspect the run whenever it is available. In particular, inspect the shape of the reward curves over training, including overall reward mean and standard deviation, cumulative average reward, group-level diagnostics, and every sub-reward component curve. Look for trends, plateaus, spikes, collapse, divergence between components, and checkpoint-to-checkpoint changes. Report the exact W&B metrics, run context, and curve-shape observations consulted. If the W&B MCP server is unavailable, state that explicitly and rely on local artifacts without claiming that remote curves were inspected.
 
 ## Write and present the report
 
