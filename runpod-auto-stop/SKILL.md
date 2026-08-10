@@ -33,6 +33,7 @@ Safely schedule the current RunPod pod to stop after a user-defined condition.
 4. Start `scripts/runpod_stop_supervisor.py` with all criteria. Keep the supervisor attached when possible, or use a durable process manager. Do not use an untracked detached shell.
 5. Monitor the state file and supervisor output. The expected phases are `monitoring`, `criteria_met`, `stop_requested`, and `stopped_or_exited`.
 6. After a stop request, report that the pod may terminate the supervisor before final API confirmation. The pre-stop state file is the durable record.
+7. After criteria are met, pass `--grace-seconds 300`. The supervisor remains in `grace_period` for five minutes, rechecks that the tracked process has not restarted, and only then requests the stop.
 
 ## Command patterns
 
@@ -45,6 +46,7 @@ python3 scripts/runpod_stop_supervisor.py \
   --require-file logs/error_analysis.txt \
   --require-fresh-file \
   --poll-seconds 30 \
+  --grace-seconds 300 \
   --state-file /workspace/runpod-auto-stop.json
 ```
 
@@ -57,6 +59,7 @@ python3 scripts/runpod_stop_supervisor.py \
   --require-file logs/error_analysis.txt \
   --require-fresh-file \
   --poll-seconds 30 \
+  --grace-seconds 300 \
   --state-file /workspace/runpod-auto-stop.json \
   --execute
 ```
@@ -91,4 +94,3 @@ It sends the API key only in the Authorization header. It never prints the key. 
 - If a required condition becomes false, reset the stability counter.
 - Require two consecutive qualifying polls by default.
 - If the supervisor itself exits before `stop_requested`, treat the schedule as incomplete and inspect the state file.
-

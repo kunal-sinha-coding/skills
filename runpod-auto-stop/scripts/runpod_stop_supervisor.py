@@ -33,6 +33,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--max-runtime-seconds", type=float)
     parser.add_argument("--poll-seconds", type=float, default=30.0)
     parser.add_argument("--stable-polls", type=int, default=2)
+    parser.add_argument("--grace-seconds", type=float, default=0.0)
     parser.add_argument("--state-file", default="/tmp/runpod-auto-stop.json")
     parser.add_argument("--execute", action="store_true")
     parser.add_argument("--once", action="store_true")
@@ -171,6 +172,19 @@ def main() -> int:
             if not args.execute:
                 print("Dry run: add --execute after confirming this state.")
                 return 0
+            grace_until = time.time() + max(0.0, args.grace_seconds)
+            state["phase"] = "grace_period"
+            state["grace_period_seconds"] = max(0.0, args.grace_seconds)
+            state["grace_period_until"] = datetime.fromtimestamp(grace_until, timezone.utc).isoformat()
+            write_state(state_path, state)
+            while time.time() < grace_until:
+                time.sleep(min(30.0, max(1.0, grace_until - time.time())))
+            if args.process_pid is not None and process_exists(args.process_pid):
+                state["phase"] = "monitoring"
+                state["restart_detected_at"] = utc_now()
+                stable_count = 0
+                write_state(state_path, state)
+                continue
             state["phase"] = "stop_requested"
             state["stop_requested_at"] = utc_now()
             write_state(state_path, state)
@@ -190,4 +204,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
