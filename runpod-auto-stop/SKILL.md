@@ -75,10 +75,10 @@ For iterative training, require all of the following before stopping:
 - The required error analysis report exists.
 - The report sentinel is newer than the current run start.
 - The terminal summary has been written, if the workflow provides one.
-- After all required artifacts are updated and the changes are committed and pushed, create a fresh readiness sentinel such as `/tmp/post-training-stop-ready` containing the pushed commit IDs.
-- Require that readiness sentinel as an additional fresh file before beginning the grace period.
+- If the selected stopping criteria require work outside the supervisor, create a fresh readiness sentinel after that work succeeds.
+- Require that sentinel as an additional fresh file only when the selected criteria include it.
 
-The supervisor can verify files and process state, but it cannot author the error analysis or perform the commit and push. The calling workflow must create the readiness sentinel only after those actions succeed.
+The supervisor can verify files and process state, but it cannot perform arbitrary user-specific post-processing. Use an optional readiness sentinel to bridge those external checks into the supervisor.
 
 ## RunPod API behavior
 
