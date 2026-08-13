@@ -1,25 +1,28 @@
 ---
 name: take-meeting-notes
-description: Create or update concise meeting notes from the current conversation, working session, transcript, or supporting local artifacts. Use when Codex needs to capture discussion context, verified findings, decisions, rationale, metrics, unresolved questions, and action items in a durable notes file such as logs/notes.txt.
+description: Create or update chronological experiment notes from the current conversation, working session, transcript, or supporting local artifacts. Use when Codex needs to record repeated cycles of hypotheses, experiments, metrics, what worked, what failed, learnings, and next hypotheses across ML, code, infrastructure, or research work in a durable file such as logs/notes.txt.
 ---
 
 # Take Meeting Notes
 
-Convert a working session into useful notes that let a reader understand what happened without reading the full transcript.
+Convert a working session into a chronological series of hypothesis and experiment cycles that preserve how the work evolved.
 
 ## Workflow
 
 1. Read the available conversation context and identify the requested time or topic scope.
 2. Inspect relevant local artifacts when they verify material claims, metrics, commands, commits, or current status.
-3. Separate observations from interpretations. Label hypotheses when evidence does not establish causality.
-4. Write or update the requested notes file. Default to `logs/notes.txt` in the current repository when no path is specified.
-5. Preserve existing notes unless the user explicitly requests replacement. Add a dated session section when appending.
-6. Review the notes for factual accuracy, duplicated points, stale status, and missing action owners.
-7. Validate the file and follow the repository's commit and push workflow.
+3. Divide the session into chronological cycles. Start a new cycle when the hypothesis, implementation, experiment, or interpretation changes materially.
+4. For each cycle, record the hypothesis, experiment, metrics, what went well, what went badly, what was learned, and the next hypothesis.
+5. Include coding and infrastructure experiments alongside ML experiments when they affected progress or conclusions.
+6. Separate observations from interpretations. Label hypotheses when evidence does not establish causality.
+7. Write or update the requested notes file. Default to `logs/notes.txt` in the current repository when no path is specified.
+8. Preserve existing notes unless the user explicitly requests replacement. Add a dated session section when appending.
+9. Review the notes for factual accuracy, duplicated points, stale status, and missing transitions between cycles.
+10. Validate the file and follow the repository's commit and push workflow.
 
 ## Note Structure
 
-Use only sections supported by the session. Prefer this order.
+Begin with minimal session context. Repeat the experiment-cycle section for the duration of the session.
 
 ```markdown
 # Meeting Notes
@@ -29,40 +32,55 @@ Use only sections supported by the session. Prefer this order.
 - Date: YYYY-MM-DD
 - Topic: A concise description.
 
-## Context
+## Starting Point
 
 A short explanation of the goal and relevant background.
 
-## Key Findings
+## Cycle 1: A concise experiment name
 
-- State measured results with exact values and units.
-- Mark interpretations as hypotheses.
+### Hypothesis
 
-## Decisions
+State what was expected and why.
 
-- Record what was decided and why.
+### Experiment
 
-## Experiments and Results
+State what changed, what stayed fixed, and how success was evaluated.
 
-| Experiment | Result | Interpretation |
-| --- | --- | --- |
+### Metrics
 
-## Open Questions
+State exact measured results with units, run IDs, or checkpoint names when useful.
 
-- Record unresolved questions that affect subsequent work.
+### What Went Well
 
-## Action Items
+State successful behavior, implementation, tooling, or evidence.
 
-- [ ] State the action, owner when known, and success condition.
+### What Went Badly
+
+State failures, regressions, confounders, or operational problems.
+
+### Learning
+
+State the best current interpretation and distinguish it from measured evidence.
+
+### Next Hypothesis
+
+State the next idea that followed from this cycle.
+
+## Cycle 2: The next experiment
+
+Repeat the same subsections.
 ```
 
 ## Writing Rules
 
 - Use concise, complete sentences.
+- Preserve chronological causality. Make clear how one result led to the next hypothesis.
 - Capture conclusions and rationale instead of reproducing dialogue.
+- Include only metrics that help evaluate the hypothesis or explain the next decision.
+- Record code, evaluation, logging, orchestration, and infrastructure work as experiment cycles when they materially affected the session.
 - Preserve exact metric names, run identifiers, links, file paths, and commit hashes when useful.
 - Distinguish absolute percentage-point changes from relative percentage changes.
 - Do not present a best checkpoint as a final result when a run is still active.
 - Do not invent attendees, owners, deadlines, decisions, or consensus.
 - Note important failures and abandoned approaches when they explain later decisions.
-- Keep action items specific and testable.
+- End with the latest hypothesis rather than a generic summary or action-item list unless the user requests one.
