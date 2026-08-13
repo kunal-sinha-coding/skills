@@ -1,4 +1,4 @@
 interface:
   display_name: "Take Meeting Notes"
-  short_description: "Turn working sessions into concise meeting notes"
-  default_prompt: "Use $take-meeting-notes to summarize this working session into clear decisions and action items."
+  short_description: "Capture experiments and agentic coding changes"
+  default_prompt: "Use $take-meeting-notes to turn this session into chronological experiment notes with an Agentic Coding section."
