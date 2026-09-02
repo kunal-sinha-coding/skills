@@ -26,3 +26,7 @@ Updated hill-climbing/SKILL.md to favor upstream changes likely to generalize be
 ## 2026-09-02: Require renewed hypotheses before pausing
 
 Updated hill-climbing/SKILL.md so an exhausted hypothesis list triggers a full review of prior results and error analyses, including meta-level reflection and new generalizable hypotheses, rather than pausing the session immediately.
+
+## 2026-09-02: Require meta-review after every iteration
+
+Updated hill-climbing/SKILL.md so every iteration includes a meta-level review of the full experiment history, not only sessions that have exhausted their current hypotheses.

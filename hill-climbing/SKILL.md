@@ -35,9 +35,11 @@ For every nonzero bucket, perform root-cause analysis across data, data formatti
 
 Choose one highest-priority fix per iteration using pass rate as the primary selection and stopping metric. Prefer the smallest change that tests a specific causal hypothesis. Implement that one fix on the hill-climbing branch, record the affected files and exact behavioral intent, run focused validation, and rerun the identical 10-example evaluation. Use reward and error buckets as secondary diagnostics rather than optimization targets. If the fix fails, regresses, or creates new buckets, document that result and either refine the same hypothesis or abandon it for a different single fix. Never claim success without a before-and-after pass-rate comparison using the same tasks and denominator.
 
+After every iteration, perform a brief meta-level review of the full history so far. Reassess why the tested change worked or failed, what assumptions may be wrong, which causes are shared across failures, and which new generalizable hypotheses should be tested next.
+
 Continue until the user stops, the fixed batch is fully passing, the user’s stopping condition is met, or further changes are not supported by evidence. If a run command fails before producing an evaluation, diagnose the command or environment separately and do not classify it as a model error.
 
-Do not pause merely because the current list of hypotheses is exhausted. Re-examine all prior iterations, task-level failures, error-bucket distributions, successful examples, and rejected fixes. Perform a meta-level reflection on why the prior interventions failed, identify shared upstream causes and limitations of the tiny batch, and formulate new generalizable hypotheses before deciding that no supported work remains.
+Do not pause merely because the current list of hypotheses is exhausted. Re-examine all prior iterations, task-level failures, error-bucket distributions, successful examples, and rejected fixes. Perform a deeper meta-level reflection on why the prior interventions failed, identify shared upstream causes and limitations of the tiny batch, and formulate new generalizable hypotheses before deciding that no supported work remains.
 
 ## Maintain `hillclimbing.txt`
 
