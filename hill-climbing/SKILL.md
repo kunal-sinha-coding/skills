@@ -13,6 +13,7 @@ Use this skill for an iterative model-improvement session in a repository. The g
 2. Determine the training command from the user. If none is supplied, use the README’s standard command with `configs/default.yaml`.
 3. Create or switch to a dedicated Git branch before changing code or configuration. Use the user’s branch name when supplied. Otherwise use `hill-climbing-YYYYMMDD-HHMMSS`, including the creation timestamp. If that name exists, append a more specific timestamp or an incrementing suffix. Do not make the experiment on `main`.
 4. Preserve unrelated existing work. Record the starting commit, branch, dirty paths, command, model, dataset split, seed, and log path in the report.
+5. Follow the repository’s `AGENTS.md` Git workflow in addition to this skill. Before every commit, update the required notes file, commit all related non-ignored changes, and push the current branch. Push the dedicated branch immediately after its first commit so the experiment is backed up remotely, then push after every later change as well. If repository instructions require a different branch policy, follow the more specific user or repository instruction and document the resulting branch in the report.
 
 ## Configure the controlled batch
 
@@ -53,4 +54,4 @@ Use plain text or Markdown headings inside the `.txt` file. Keep raw exceptions,
 
 ## Handoff
 
-At the end of each iteration, print a concise summary containing the branch, command, batch and task IDs, pass rate, bucket distribution, fix, before-and-after result, and next proposal. Leave the working tree and branch clearly reported. Do not push, merge, delete branches, or alter unrelated files unless the user explicitly requests that additional Git operation.
+At the end of each iteration, print a concise summary containing the branch, command, batch and task IDs, pass rate, bucket distribution, fix, before-and-after result, and next proposal. Leave the working tree and branch clearly reported. Do not merge, delete branches, or alter unrelated files unless the user explicitly requests that additional Git operation.

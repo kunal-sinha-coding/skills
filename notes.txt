@@ -3,3 +3,6 @@
 ## 2026-09-02: Create hill-climbing skill
 
 Added `hill-climbing/SKILL.md` and its UI metadata to provide a controlled, iterative training-debugging workflow. The skill defaults to a stable ten-example evaluation batch, creates a timestamped dedicated branch, reads the repository’s documented command and log schema, classifies every failure, records root-cause analysis and one-fix experiments in `hillclimbing.txt`, and compares each subsequent run against the same task IDs. The skill was validated with the bundled skill validator.
+Commit: Clarify hill-climbing Git synchronization
+
+Updated hill-climbing/SKILL.md to explicitly require following repository AGENTS.md commit and push instructions, pushing the dedicated experiment branch after its first commit, and pushing subsequent related changes. Replaced the conflicting blanket no-push handoff guidance while preserving the prohibition on unrelated Git operations.
