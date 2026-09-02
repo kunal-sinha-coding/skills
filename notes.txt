@@ -1,31 +1,5 @@
-## Commit Name
+# Repository Notes
 
-Synchronize commit note requirements.
+## 2026-09-02: Create hill-climbing skill
 
-## Description
-
-The repository instructions require every commit to include a notes entry with the commit name, what changed, why it changed, and relevant context.
-
-## Why
-
-This keeps repository history understandable beyond the commit subject.
-
-## Context
-
-The rule was synchronized across the local repositories as required by their shared AGENTS.md policy.
-
-## Commit Name
-
-Complete commit note records.
-
-## Description
-
-This commit fills the notes file that was created empty by the initial synchronization command.
-
-## Why
-
-The first mechanical append did not process a zero-length file, so the required commit context was missing.
-
-## Context
-
-This correction documents both the original instruction change and the reason for this follow-up commit.
+Added `hill-climbing/SKILL.md` and its UI metadata to provide a controlled, iterative training-debugging workflow. The skill defaults to a stable ten-example evaluation batch, creates a timestamped dedicated branch, reads the repository’s documented command and log schema, classifies every failure, records root-cause analysis and one-fix experiments in `hillclimbing.txt`, and compares each subsequent run against the same task IDs. The skill was validated with the bundled skill validator.

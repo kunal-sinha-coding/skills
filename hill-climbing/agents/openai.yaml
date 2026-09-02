@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hill Climbing"
+  short_description: "Iteratively improve model errors on a tiny batch"
+  default_prompt: "Use $hill-climbing to run a controlled tiny-batch evaluation, analyze errors, apply one fix, and repeat."
