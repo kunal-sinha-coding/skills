@@ -50,3 +50,7 @@ Updated hill-climbing/SKILL.md to make iteration summaries internal progress upd
 ## 2026-09-02: Require discriminating meta-diagnostics
 
 Updated hill-climbing/SKILL.md to require competing high-level explanations and small discriminating diagnostics during meta-analysis. The pass-at-N capability test is an example of distinguishing missing capability from insufficient exploration, not a mandatory diagnostic template.
+
+## 2026-09-02: Require experiment process preflight
+
+Updated hill-climbing/SKILL.md to require checking and cleaning stale training or evaluation processes before every experiment, ensuring only the intended current experiment runs and logs are not mixed.
