@@ -10,3 +10,7 @@ Updated hill-climbing/SKILL.md to explicitly require following repository AGENTS
 ## 2026-09-02: Make pass rate the hill-climbing objective
 
 Updated hill-climbing/SKILL.md so fixed-batch pass rate is the primary optimization, selection, and stopping metric. Reward and error buckets remain secondary diagnostics, and every before-and-after claim must compare pass rate on the identical task IDs and denominator.
+
+## 2026-09-02: Clarify default and explicit branch workflow
+
+Updated AGENTS.md so commits and pushes default to main, while an explicitly specified branch is used when provided. Synchronized the instruction across the three local repositories.
