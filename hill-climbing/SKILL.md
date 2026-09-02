@@ -37,6 +37,8 @@ Choose one highest-priority fix per iteration using pass rate as the primary sel
 
 Continue until the user stops, the fixed batch is fully passing, the user’s stopping condition is met, or further changes are not supported by evidence. If a run command fails before producing an evaluation, diagnose the command or environment separately and do not classify it as a model error.
 
+Do not pause merely because the current list of hypotheses is exhausted. Re-examine all prior iterations, task-level failures, error-bucket distributions, successful examples, and rejected fixes. Perform a meta-level reflection on why the prior interventions failed, identify shared upstream causes and limitations of the tiny batch, and formulate new generalizable hypotheses before deciding that no supported work remains.
+
 ## Maintain `hillclimbing.txt`
 
 Append to `Path(log_path).parent / "hillclimbing.txt"`. Create parent directories as needed. Each new session begins with a timestamped header in the same visual style as `logs/logs.txt`, using `HILL CLIMBING SESSION STARTING` and the date and time. Keep all iterations under that session header. Do not replace earlier sessions.

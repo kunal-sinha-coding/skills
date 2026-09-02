@@ -22,3 +22,7 @@ Updated hill-climbing/SKILL.md to require an explicit keep-or-revert decision an
 ## 2026-09-02: Require generalizable hill-climbing changes
 
 Updated hill-climbing/SKILL.md to favor upstream changes likely to generalize beyond the tiny evaluation batch. Batch-specific, task-order-specific, and seed-only gains are now diagnostic evidence rather than valid improvements without independent confirmation or a clear general mechanism.
+
+## 2026-09-02: Require renewed hypotheses before pausing
+
+Updated hill-climbing/SKILL.md so an exhausted hypothesis list triggers a full review of prior results and error analyses, including meta-level reflection and new generalizable hypotheses, rather than pausing the session immediately.
