@@ -41,6 +41,8 @@ Choose one highest-priority fix per iteration using pass rate as the primary sel
 
 After every iteration, perform a brief meta-level review of the full history so far. Reassess why the tested change worked or failed, what assumptions may be wrong, which causes are shared across failures, and which new generalizable hypotheses should be tested next.
 
+During that meta-review, enumerate competing high-level explanations for the underlying failure and propose a small diagnostic or tiny experiment that can distinguish between them. Prefer discriminating evidence when the result would change the next intervention, such as testing whether failures reflect missing capability versus insufficient exploration. This is a general reasoning pattern rather than a prescribed diagnostic; choose the smallest informative test suited to the competing hypotheses and the available evidence.
+
 Treat each iteration summary as an internal progress update, not as a reason to end the conversation turn. Immediately select and start the next supported iteration after recording the summary. Send a final handoff only when the user explicitly stops or a documented stopping condition is genuinely reached, such as a fully passing batch or a completed retrospective that produces no defensible hypothesis after reexamination.
 
 Continue until the user stops, the fixed batch is fully passing, the user’s stopping condition is met, or further changes are not supported by evidence. If a run command fails before producing an evaluation, diagnose the command or environment separately and do not classify it as a model error.

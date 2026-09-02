@@ -46,3 +46,7 @@ Updated hill-climbing/SKILL.md to require logging and studying all relevant metr
 ## 2026-09-02: Prevent iteration summaries from ending the loop
 
 Updated hill-climbing/SKILL.md to make iteration summaries internal progress updates, require immediate continuation into the next supported iteration, and require returning to the active loop after interruptions instead of sending a final handoff.
+
+## 2026-09-02: Require discriminating meta-diagnostics
+
+Updated hill-climbing/SKILL.md to require competing high-level explanations and small discriminating diagnostics during meta-analysis. The pass-at-N capability test is an example of distinguishing missing capability from insufficient exploration, not a mandatory diagnostic template.
