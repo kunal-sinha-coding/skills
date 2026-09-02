@@ -5,7 +5,7 @@ description: Run controlled tiny-batch evaluations, classify every failure, appl
 
 # Hill Climbing
 
-Use this skill for an iterative model-improvement session in a repository. The goal is a measurable improvement on a fixed small evaluation batch, with every observation, hypothesis, code change, and result recorded in `hillclimbing.txt` beside the configured evaluation log.
+Use this skill for an iterative model-improvement session in a repository. The primary objective is to maximize pass rate on a fixed small evaluation batch, with reward treated as a secondary diagnostic that may improve as a byproduct. Record every observation, hypothesis, code change, and result in `hillclimbing.txt` beside the configured evaluation log.
 
 ## Start safely
 
@@ -31,7 +31,7 @@ Calculate a distribution for the chosen denominator. Include each bucket’s cou
 
 For every nonzero bucket, perform root-cause analysis across data, data formatting, prompt or context construction, model behavior, parser or extraction, reward, training configuration, evaluation code, and environment as applicable. Separate observed facts from hypotheses, list competing explanations, identify upstream causes shared across buckets, and explain residual failures that the shared explanation does not cover.
 
-Choose one highest-priority fix per iteration. Prefer the smallest change that tests a specific causal hypothesis. Implement that one fix on the hill-climbing branch, record the affected files and exact behavioral intent, run focused validation, and rerun the identical 10-example evaluation. If the fix fails, regresses, or creates new buckets, document that result and either refine the same hypothesis or abandon it for a different single fix. Never claim success without a before-and-after comparison using the same tasks and denominator.
+Choose one highest-priority fix per iteration using pass rate as the primary selection and stopping metric. Prefer the smallest change that tests a specific causal hypothesis. Implement that one fix on the hill-climbing branch, record the affected files and exact behavioral intent, run focused validation, and rerun the identical 10-example evaluation. Use reward and error buckets as secondary diagnostics rather than optimization targets. If the fix fails, regresses, or creates new buckets, document that result and either refine the same hypothesis or abandon it for a different single fix. Never claim success without a before-and-after pass-rate comparison using the same tasks and denominator.
 
 Continue until the user stops, the fixed batch is fully passing, the user’s stopping condition is met, or further changes are not supported by evidence. If a run command fails before producing an evaluation, diagnose the command or environment separately and do not classify it as a model error.
 
@@ -42,16 +42,16 @@ Append to `Path(log_path).parent / "hillclimbing.txt"`. Create parent directorie
 Use one subsection per iteration, in order. Every subsection must include:
 
 - The exact command, effective config, branch, commit, batch size, task IDs, log range, and model context.
-- The pass count, failure count, denominator, and complete error-bucket distribution with counts and percentages.
+- The pass count, pass rate, failure count, denominator, and complete error-bucket distribution with counts and percentages.
 - The observed evidence for every failed example or a clear reference to its task-level records in the source log.
 - The root-cause analysis, including evidence, hypotheses, alternatives, shared causes, and limitations.
 - The proposed fix, why it tests the selected hypothesis, and the exact files or code paths changed.
-- Focused validation and the post-fix evaluation results compared with the previous iteration.
-- A verdict of improved, regressed, unchanged, inconclusive, or fully passing, supported by metrics.
+- Focused validation and the post-fix evaluation results compared with the previous iteration, with pass rate first and reward second.
+- A verdict of improved, regressed, unchanged, inconclusive, or fully passing, based primarily on pass rate and supported by secondary diagnostics.
 - Thoughts for the next iteration, including whether to refine, revert, or abandon the current approach.
 
 Use plain text or Markdown headings inside the `.txt` file. Keep raw exceptions, assertion details, and representative completion excerpts sufficiently intact for another agent to audit the classification. Never fabricate unavailable logs or remote metrics. If a W&B or other external source is unavailable, say so explicitly.
 
 ## Handoff
 
-At the end of each iteration, print a concise summary containing the branch, command, batch and task IDs, pass rate, bucket distribution, fix, before-and-after result, and next proposal. Leave the working tree and branch clearly reported. Do not merge, delete branches, or alter unrelated files unless the user explicitly requests that additional Git operation.
+At the end of each iteration, print a concise summary containing the branch, command, batch and task IDs, pass rate, bucket distribution, fix, before-and-after pass-rate result, and next proposal. Leave the working tree and branch clearly reported. Do not merge, delete branches, or alter unrelated files unless the user explicitly requests that additional Git operation.
