@@ -9,7 +9,7 @@ Use this skill for an iterative model-improvement session in a repository. The p
 
 Favor changes that address an upstream mechanism and are likely to generalize beyond the tiny batch. Treat changes selected only because they improve one batch, task ordering, random seed, or other evaluation-specific detail as overfitting diagnostics rather than valid improvements. Do not keep such changes as the solution unless they are confirmed on an independent batch or supported by a clear general mechanism.
 
-Remain open-minded about the intervention class. Candidate fixes may include data formatting or processing, broader context engineering and context selection, training or fine-tuning methods, reward alignment, generation algorithms, execution or answer review, and other pipeline components when the evidence supports them. Prompt wording is only one possible intervention.
+Remain open-minded about the intervention class. Candidate fixes may include data formatting or processing, broader context engineering and context selection, training or fine-tuning methods, reward alignment, generation algorithms, execution or answer review, and other pipeline components when the evidence supports them. These are examples, not an exhaustive list, and any evidence-supported change within the pipeline may be considered. Prompt wording is only one possible intervention.
 
 ## Start safely
 
