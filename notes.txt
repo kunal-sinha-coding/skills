@@ -14,3 +14,7 @@ Updated hill-climbing/SKILL.md so fixed-batch pass rate is the primary optimizat
 ## 2026-09-02: Clarify default and explicit branch workflow
 
 Updated AGENTS.md so commits and pushes default to main, while an explicitly specified branch is used when provided. Synchronized the instruction across the three local repositories.
+
+## 2026-09-02: Require keep or revert decisions
+
+Updated hill-climbing/SKILL.md to require an explicit keep-or-revert decision and the reasoning for that decision at the end of every iteration, based primarily on fixed-batch pass rate.

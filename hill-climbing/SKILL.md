@@ -49,6 +49,7 @@ Use one subsection per iteration, in order. Every subsection must include:
 - Focused validation and the post-fix evaluation results compared with the previous iteration, with pass rate first and reward second.
 - A verdict of improved, regressed, unchanged, inconclusive, or fully passing, based primarily on pass rate and supported by secondary diagnostics.
 - Thoughts for the next iteration, including whether to refine, revert, or abandon the current approach.
+- An explicit decision to keep or revert the tested change before the next iteration, with the reasoning based primarily on fixed-batch pass rate and secondarily on diagnostics.
 
 Use plain text or Markdown headings inside the `.txt` file. Keep raw exceptions, assertion details, and representative completion excerpts sufficiently intact for another agent to audit the classification. Never fabricate unavailable logs or remote metrics. If a W&B or other external source is unavailable, say so explicitly.
 
