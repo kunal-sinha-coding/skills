@@ -38,3 +38,7 @@ Updated hill-climbing/SKILL.md to explicitly consider data processing, broad con
 ## 2026-09-02: Make intervention examples non-exhaustive
 
 Clarified that the listed intervention classes are examples rather than an exhaustive set, and that any evidence-supported pipeline change may be considered.
+
+## 2026-09-02: Require broad metric logging and inspection
+
+Updated hill-climbing/SKILL.md to require logging and studying all relevant metrics for every training strategy. Loss, reward, completion behavior, learning-rate schedules, gradients, and evaluation metrics are examples rather than an exhaustive list.

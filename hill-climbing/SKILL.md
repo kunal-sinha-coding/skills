@@ -11,6 +11,8 @@ Favor changes that address an upstream mechanism and are likely to generalize be
 
 Remain open-minded about the intervention class. Candidate fixes may include data formatting or processing, broader context engineering and context selection, training or fine-tuning methods, reward alignment, generation algorithms, execution or answer review, and other pipeline components when the evidence supports them. These are examples, not an exhaustive list, and any evidence-supported change within the pipeline may be considered. Prompt wording is only one possible intervention.
 
+For every training strategy, ensure that all available relevant metrics are logged locally or to an available experiment tracker and inspect them before choosing the next iteration. Include metrics such as loss, reward, completion lengths and behavior, learning-rate schedules, optimizer or gradient signals, evaluation outcomes, and any other diagnostics exposed by the training or evaluation pipeline. The listed metrics are examples, not an exhaustive set.
+
 ## Start safely
 
 1. Read the repository `README.md`, `logs/README.md`, the configured YAML file, and the training and evaluation entry points before running anything. Use the documented command and log schema rather than guessing.
