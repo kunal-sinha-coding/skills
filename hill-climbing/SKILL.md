@@ -41,6 +41,8 @@ Choose one highest-priority fix per iteration using pass rate as the primary sel
 
 After every iteration, perform a brief meta-level review of the full history so far. Reassess why the tested change worked or failed, what assumptions may be wrong, which causes are shared across failures, and which new generalizable hypotheses should be tested next.
 
+Treat each iteration summary as an internal progress update, not as a reason to end the conversation turn. Immediately select and start the next supported iteration after recording the summary. Send a final handoff only when the user explicitly stops or a documented stopping condition is genuinely reached, such as a fully passing batch or a completed retrospective that produces no defensible hypothesis after reexamination.
+
 Continue until the user stops, the fixed batch is fully passing, the user’s stopping condition is met, or further changes are not supported by evidence. If a run command fails before producing an evaluation, diagnose the command or environment separately and do not classify it as a model error.
 
 Do not pause merely because the current list of hypotheses is exhausted. Re-examine all prior iterations, task-level failures, error-bucket distributions, successful examples, and rejected fixes. Perform a deeper meta-level reflection on why the prior interventions failed, identify shared upstream causes and limitations of the tiny batch, and formulate new generalizable hypotheses before deciding that no supported work remains.
@@ -66,3 +68,5 @@ Use plain text or Markdown headings inside the `.txt` file. Keep raw exceptions,
 ## Handoff
 
 At the end of each iteration, print a concise summary containing the branch, command, batch and task IDs, pass rate, bucket distribution, fix, before-and-after pass-rate result, and next proposal. Leave the working tree and branch clearly reported. Do not merge, delete branches, or alter unrelated files unless the user explicitly requests that additional Git operation.
+
+When a user interrupts with a question or new instruction, complete that interruption, apply the requested update, and then return directly to the active loop. Do not convert the interruption response into a final handoff while the original hill-climbing objective remains unfinished.

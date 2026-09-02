@@ -42,3 +42,7 @@ Clarified that the listed intervention classes are examples rather than an exhau
 ## 2026-09-02: Require broad metric logging and inspection
 
 Updated hill-climbing/SKILL.md to require logging and studying all relevant metrics for every training strategy. Loss, reward, completion behavior, learning-rate schedules, gradients, and evaluation metrics are examples rather than an exhaustive list.
+
+## 2026-09-02: Prevent iteration summaries from ending the loop
+
+Updated hill-climbing/SKILL.md to make iteration summaries internal progress updates, require immediate continuation into the next supported iteration, and require returning to the active loop after interruptions instead of sending a final handoff.
