@@ -18,3 +18,7 @@ Updated AGENTS.md so commits and pushes default to main, while an explicitly spe
 ## 2026-09-02: Require keep or revert decisions
 
 Updated hill-climbing/SKILL.md to require an explicit keep-or-revert decision and the reasoning for that decision at the end of every iteration, based primarily on fixed-batch pass rate.
+
+## 2026-09-02: Require generalizable hill-climbing changes
+
+Updated hill-climbing/SKILL.md to favor upstream changes likely to generalize beyond the tiny evaluation batch. Batch-specific, task-order-specific, and seed-only gains are now diagnostic evidence rather than valid improvements without independent confirmation or a clear general mechanism.
