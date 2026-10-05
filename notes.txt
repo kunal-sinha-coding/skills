@@ -68,3 +68,13 @@ Synchronized the repository agent instructions with post-training. Metric-bearin
 ## 2026-10-03: Add ASD-STE100 writing guidance
 
 Updated the writing style instructions in AGENTS.md across post-training, personal-website, and user-skills to follow ASD-STE100 Simplified Technical English. This applies the requested style standard before drafting a new blog post.
+
+## 2026-10-05: Add crawler-readable social preview metadata to publishing skill
+
+Commit name: Add social preview rules to blog publishing skill.
+
+Description: Updated `publish-blog-post/SKILL.md` to require static Open Graph and X Card metadata in the HTML head. The skill now selects the first embedded image or a static article figure as the thumbnail, falls back to the home page profile image when the post has no image, and requires an absolute public HTTPS image URL. It also validates that metadata is present and the image URL is publicly accessible.
+
+Why: The user asked to prevent client-rendered Markdown posts from appearing blank to social crawlers and to use the post's own image where available, with the home page profile photo as a fallback.
+
+Context: The active skill path is a symlink to this tracked skills repository. The publishing site uses the canonical base `https://kunal-sinha-coding.github.io/personal-website/`. The site was not changed in this skill-only update.

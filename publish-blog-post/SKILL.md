@@ -15,12 +15,14 @@ Turn one specified Markdown post in `/workspace/personal-website/blog` into a pu
 2. Inspect the specified post and the existing published post at `blog/intro_rl.md` and `blog/intro_rl.html` before editing.
 3. Choose a lowercase snake case slug that is unique under `blog/`.
 4. Keep the Markdown content at `blog/<slug>.md`. Do not create a separate draft directory.
-5. Copy the existing published HTML shell to `blog/<slug>.html`. Update the page title, metadata, visible heading, date, and Markdown fetch path. Keep the existing renderer, styling, MathJax support, and Mermaid support.
-6. Add or update the matching entry in `blog/posts.json`. Set `published` to `true` to display the post on the homepage or `false` to keep it hidden.
-7. Do not add individual post cards directly to `index.html`. The homepage reads `blog/posts.json` and filters entries by `published`.
-8. Check that the HTML fetch path matches the new Markdown filename and that the manifest slug matches the new HTML filename.
-9. Review the diff for accidental changes. Run `git diff --check` and any repository-appropriate validation available.
-10. Commit only the intended website files directly on `main` with a clear message, then push `main` to the personal-website remote.
+5. Copy the existing published HTML shell to `blog/<slug>.html`. Update the page title, visible heading, date, metadata, and Markdown fetch path. Keep the existing renderer, styling, MathJax support, and Mermaid support.
+6. Add static social preview metadata directly inside the HTML `<head>`. Include Open Graph tags for `og:type`, `og:url`, `og:title`, `og:description`, `og:image`, and `og:image:alt`. Include X Card tags for `twitter:card`, `twitter:url`, `twitter:title`, `twitter:description`, `twitter:image`, and `twitter:image:alt`. Use `summary_large_image` for `twitter:card`. Use the post title and its subtitle or manifest summary for the title and description.
+7. Choose the social preview image from the post. Use the first image embedded in the Markdown, or a static image of a relevant chart or diagram in the post. If there is no article image or static figure, use the home page profile image at `header/profile-picture.jpg`. Set `og:image` and `twitter:image` to the same absolute HTTPS URL. Never use a placeholder URL or a relative image URL.
+8. Add or update the matching entry in `blog/posts.json`. Set `published` to `true` to display the post on the homepage or `false` to keep it hidden.
+9. Do not add individual post cards directly to `index.html`. The homepage reads `blog/posts.json` and filters entries by `published`.
+10. Check that the HTML fetch path matches the new Markdown filename, the manifest slug matches the new HTML filename, all social metadata is present in the static `<head>`, and the image URL is absolute and publicly accessible.
+11. Review the diff for accidental changes. Run `git diff --check` and any repository-appropriate validation available.
+12. Commit only the intended website files directly on `main` with a clear message, then push `main` to the personal-website remote.
 
 ## Publishing rules
 
