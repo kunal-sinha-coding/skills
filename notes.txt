@@ -78,3 +78,7 @@ Description: Updated `publish-blog-post/SKILL.md` to require static Open Graph a
 Why: The user asked to prevent client-rendered Markdown posts from appearing blank to social crawlers and to use the post's own image where available, with the home page profile photo as a fallback.
 
 Context: The active skill path is a symlink to this tracked skills repository. The publishing site uses the canonical base `https://kunal-sinha-coding.github.io/personal-website/`. The site was not changed in this skill-only update.
+
+Commit name: Sync mandatory interruption continuation.
+
+Synchronized `AGENTS.md` with the post-training repository. The shared instructions now require active-task checks after every user message and every response, and require immediate resumption of unfinished authorized work after answering an interruption.
