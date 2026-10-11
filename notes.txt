@@ -88,3 +88,6 @@ Synchronized the AGENTS.md rule that an active training run or experiment must n
 
 2026-10-11: Update hill-climbing branch policy
 Changed `hill-climbing/SKILL.md` to keep experiments on the repository's current branch instead of creating or switching to a dedicated branch. Updated related commit and implementation wording to refer to the current branch. This follows the user's instruction to keep the ongoing post-training experiment on `main` and avoids future skill guidance that conflicts with that preference.
+
+Commit name: Remove hill-climbing branch creation guidance.
+Updated `hill-climbing/SKILL.md` to use the current repository branch for experiments. Removed the rule to create or switch to a dedicated branch and updated the implementation and push instructions that depended on it. This makes the skill match the user's request to keep this experiment on `main`. The previous notes-only commit recorded this intended change before the patch was applied; this commit contains the actual skill change.

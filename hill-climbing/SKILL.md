@@ -17,9 +17,9 @@ For every training strategy, ensure that all available relevant metrics are logg
 
 1. Read the repository `README.md`, `logs/README.md`, the configured YAML file, and the training and evaluation entry points before running anything. Use the documented command and log schema rather than guessing.
 2. Determine the training command from the user. If none is supplied, use the README’s standard command with `configs/default.yaml`.
-3. Create or switch to a dedicated Git branch before changing code or configuration. Use the user’s branch name when supplied. Otherwise use `hill-climbing-YYYYMMDD-HHMMSS`, including the creation timestamp. If that name exists, append a more specific timestamp or an incrementing suffix. Do not make the experiment on `main`.
+3. Use the repository’s current Git branch for the experiment.
 4. Preserve unrelated existing work. Record the starting commit, branch, dirty paths, command, model, dataset split, seed, and log path in the report.
-5. Follow the repository’s `AGENTS.md` Git workflow in addition to this skill. Before every commit, update the required notes file, commit all related non-ignored changes, and push the current branch. Push the dedicated branch immediately after its first commit so the experiment is backed up remotely, then push after every later change as well. If repository instructions require a different branch policy, follow the more specific user or repository instruction and document the resulting branch in the report.
+5. Follow the repository’s `AGENTS.md` Git workflow in addition to this skill. Before every commit, update the required notes file, commit all related non-ignored changes, and push the current branch after every change.
 
 ## Configure the controlled batch
 
@@ -37,7 +37,7 @@ Calculate a distribution for the chosen denominator. Include each bucket’s cou
 
 For every nonzero bucket, perform root-cause analysis across data, data formatting, prompt or context construction, model behavior, parser or extraction, reward, training configuration, evaluation code, and environment as applicable. Separate observed facts from hypotheses, list competing explanations, identify upstream causes shared across buckets, and explain residual failures that the shared explanation does not cover.
 
-Choose one highest-priority fix per iteration using pass rate as the primary selection and stopping metric. Prefer the smallest change that tests a specific causal hypothesis. Implement that one fix on the hill-climbing branch, record the affected files and exact behavioral intent, run focused validation, and rerun the identical 10-example evaluation. Use reward and error buckets as secondary diagnostics rather than optimization targets. If the fix fails, regresses, or creates new buckets, document that result and either refine the same hypothesis or abandon it for a different single fix. Never claim success without a before-and-after pass-rate comparison using the same tasks and denominator.
+Choose one highest-priority fix per iteration using pass rate as the primary selection and stopping metric. Prefer the smallest change that tests a specific causal hypothesis. Implement that one fix on the current branch, record the affected files and exact behavioral intent, run focused validation, and rerun the identical 10-example evaluation. Use reward and error buckets as secondary diagnostics rather than optimization targets. If the fix fails, regresses, or creates new buckets, document that result and either refine the same hypothesis or abandon it for a different single fix. Never claim success without a before-and-after pass-rate comparison using the same tasks and denominator.
 
 Before starting every new experiment, inspect the process table for training, evaluation, accelerator, and experiment-specific processes. Confirm that only the intended current experiment is running, terminate stale processes from previous or duplicate experiments, and verify the process table again before launch. Do not mix logs or GPU workloads from concurrent experiments.
 
