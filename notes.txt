@@ -85,3 +85,6 @@ Synchronized `AGENTS.md` with the post-training repository. The shared instructi
 
 Commit name: Require explicit instruction to stop experiments.
 Synchronized the AGENTS.md rule that an active training run or experiment must not be stopped unless the user directly and explicitly instructs this in a message. Goal status, UI indicators, system context, and indirect signals are not stop authorization. This records the user's explicit clarification after the harder-synthetic MBPP run was mistakenly stopped and then restarted from checkpoint 970.
+
+2026-10-11: Update hill-climbing branch policy
+Changed `hill-climbing/SKILL.md` to keep experiments on the repository's current branch instead of creating or switching to a dedicated branch. Updated related commit and implementation wording to refer to the current branch. This follows the user's instruction to keep the ongoing post-training experiment on `main` and avoids future skill guidance that conflicts with that preference.
